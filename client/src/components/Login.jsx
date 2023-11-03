@@ -1,12 +1,11 @@
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState } from 'react';
-import handleChange from '../utils/handleChange';
-import api_url from '../utils/api_url';
-import useUserStore from '../store/userStore';
 import { useNavigate } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
+import useUserStore from '../store/userStore';
+import baseUrl from '../utils/baseUrl';
+import handleChange from '../utils/handleChange';
 import toast_alert from '../utils/toast_alert';
-import bg from '../assets/sign-up-form.svg'
 
 const Login = () => {
     const {addUser} = useUserStore()
@@ -30,7 +29,7 @@ const Login = () => {
         }
         setLoading(true)
         try {
-            const res = await axios.post(`/api/auth/signin`,value)
+            const res = await axios.post(`${baseUrl}/api/auth/signin`,value)
 
             if(res.data.status=== 200){
                 toast_alert(
