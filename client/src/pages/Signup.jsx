@@ -12,7 +12,7 @@ const Signup = () => {
     })
     const signup=async()=>{
         try {
-            const res = await axios.post(`${api_url}/auth/signup`,value)
+            const res = await axios.post(`${api_url}/api/auth/signup`,value)
             console.log(res.data)
         } catch (error) {
             console.log(error)

@@ -30,7 +30,7 @@ const Login = () => {
         }
         setLoading(true)
         try {
-            const res = await axios.post(`${api_url}/auth/signin`,value)
+            const res = await axios.post(`${api_url}/api/auth/signin`,value)
 
             if(res.data.status=== 200){
                 toast_alert(
