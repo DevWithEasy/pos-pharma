@@ -2,6 +2,7 @@ import axios from 'axios';
 import api_url from './api_url';
 import toast_alert from './toast_alert';
 
+
 export const createData= async(e,path,data,setLoading,onClose,toast) => {
     e.preventDefault()
     try {
