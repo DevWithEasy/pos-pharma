@@ -1,16 +1,15 @@
 import {
-  useDisclosure,
   useToast
 } from '@chakra-ui/react';
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import Loading_request from '../../components/Loding_request';
+import baseUrl from '../../utils/baseUrl';
 import { createData } from '../../utils/crud_utils';
 import handleChange from '../../utils/handleChange';
-import { useNavigate } from 'react-router-dom';
 import toast_alert from '../../utils/toast_alert';
-import axios from 'axios';
-import api_url from '../../utils/api_url';
 
 const New_user = () => {
     const toast = useToast()
@@ -34,7 +33,7 @@ const New_user = () => {
       }
       try {
           setLoading(true)
-          const res = await axios.post(`${api_url}/auth/create`,value,{
+          const res = await axios.post(`${baseUrl}/auth/auth/create`,value,{
               headers: {
                   authorization : localStorage.getItem('token')
               }

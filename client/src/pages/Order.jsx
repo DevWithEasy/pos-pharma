@@ -1,15 +1,15 @@
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import cart_img from '../assets/empty-cart.png';
+import Heading from '../components/Heading';
 import OrderItem from '../components/OrderItem';
 import useProductStore from '../store/productStore';
-import handleChange from '../utils/handleChange';
-import axios from 'axios';
-import api_url from '../utils/api_url';
-import { useToast } from '@chakra-ui/react';
-import {useNavigate } from 'react-router-dom'
-import cart_img from '../assets/empty-cart.png'
+import baseUrl from '../utils/baseUrl';
 import get_fixed_num from '../utils/get_fixed_num';
-import Heading from '../components/Heading';
+import handleChange from '../utils/handleChange';
 import toast_alert from '../utils/toast_alert';
 
 const Order = () => {
@@ -46,7 +46,7 @@ const Order = () => {
         }
         setFinding(true)
         try {
-            const res = await axios.get(`${api_url}/customer/${value.phone}`,{
+            const res = await axios.get(`${baseUrl}/api/customer/${value.phone}`,{
                 headers :{
                     authorization : localStorage.getItem('token')
                 }
@@ -90,7 +90,7 @@ const Order = () => {
         }
         setLoading(true)
         try {
-            const res = await axios.post(`${api_url}/invoice/create`,order,{
+            const res = await axios.post(`${baseUrl}/api/invoice/create`,order,{
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

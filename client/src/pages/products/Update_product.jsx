@@ -1,14 +1,13 @@
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import Loading from '../../components/Loading';
-import useProductStore from '../../store/productStore';
-import api_url from '../../utils/api_url';
+import useUserStore from '../../store/userStore';
+import baseUrl from '../../utils/baseUrl';
 import handleChange from '../../utils/handleChange';
 import toast_alert from '../../utils/toast_alert';
-import { useToast } from '@chakra-ui/react';
-import useUserStore from '../../store/userStore';
 
 const Update_product = () => {
     const {products} = useUserStore();
@@ -24,7 +23,7 @@ const Update_product = () => {
     const getData = async () => {
         setLoading(true)
         try {
-            const res = await axios.get(`${api_url}/product/findGenericBrand`)
+            const res = await axios.get(`${baseUrl}/api/product/findGenericBrand`)
             if(res.data.status ===200){
                 setCompanies(res.data.data.companies)
                 setGenerics(res.data.data.generics)
@@ -45,7 +44,7 @@ const Update_product = () => {
         e.preventDefault()
         setUpdating(true)
         try {
-            const res = await axios.put(`${api_url}/product/update/${value._id}`,value,{
+            const res = await axios.put(`${baseUrl}/api/product/update/${value._id}`,value,{
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

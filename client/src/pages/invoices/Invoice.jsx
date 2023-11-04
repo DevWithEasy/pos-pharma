@@ -5,7 +5,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 import Loading_request from '../../components/Loding_request';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 const Invoice = () => {
     const {id} = useParams()
@@ -16,7 +16,7 @@ const Invoice = () => {
     const getInvoice = async() =>{
         setLoading(true)
         try {
-            const res = await axios.get(`${api_url}/invoice/${id}` , {
+            const res = await axios.get(`${baseUrl}/api/invoice/${id}` , {
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

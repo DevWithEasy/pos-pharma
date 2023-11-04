@@ -1,5 +1,5 @@
 import axios from 'axios';
-import api_url from './api_url';
+import baseUrl from './baseUrl';
 import toast_alert from './toast_alert';
 
 
@@ -7,7 +7,7 @@ export const createData= async(e,path,data,setLoading,onClose,toast) => {
     e.preventDefault()
     try {
         setLoading(true)
-        const res = await axios.post(`${api_url}/${path}/create`,data,{
+        const res = await axios.post(`${baseUrl}/api/${path}/create`,data,{
             headers: {
                 authorization : localStorage.getItem('token')
             }
@@ -34,7 +34,7 @@ export const createData= async(e,path,data,setLoading,onClose,toast) => {
 export const updateData= async(e,path,data) => {
     e.preventDefault()
     try {
-        const res = await axios.put(`${api_url}/${path}/update/${data._id}`,data,{
+        const res = await axios.put(`${baseUrl}/api/${path}/update/${data._id}`,data,{
             headers: {
                 authorization : localStorage.getItem('token')
             }
@@ -47,7 +47,7 @@ export const updateData= async(e,path,data) => {
 
 export const deleteData= async(path,id) => {
     try {
-        const res = await axios.delete(`${api_url}/${path}/delete/${id}`,{
+        const res = await axios.delete(`${baseUrl}/api/${path}/delete/${id}`,{
             headers: {
                 authorization : localStorage.getItem('token')
             }

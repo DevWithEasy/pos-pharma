@@ -2,11 +2,11 @@ import { useDisclosure, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
+import Heading from '../../../components/Heading';
 import Loading_request from '../../../components/Loding_request';
-import api_url from '../../../utils/api_url';
+import baseUrl from '../../../utils/baseUrl';
 import handleChange from '../../../utils/handleChange';
 import toast_alert from '../../../utils/toast_alert';
-import Heading from '../../../components/Heading';
 
 const New_purchase = () => {
     const toast = useToast()
@@ -42,7 +42,7 @@ const New_purchase = () => {
         }
 
         try {
-            const res = await axios.get(`${api_url}/product/search?q=${search}`)
+            const res = await axios.get(`${baseUrl}/api/product/search?q=${search}`)
             setFind(res.data.data)
         } catch (error) {
             console.log(error)
@@ -126,7 +126,7 @@ const New_purchase = () => {
     const createPurchase = async()=>{
         try {
             setLoading(true)
-            const res = await axios.post(`${api_url}/purchase/create`,{total,products},{
+            const res = await axios.post(`${baseUrl}/api/purchase/create`,{total,products},{
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

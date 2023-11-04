@@ -1,12 +1,11 @@
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import useUserStore from '../../store/userStore';
-import { updateData } from '../../utils/crud_utils';
+import baseUrl from '../../utils/baseUrl';
 import handleChange from '../../utils/handleChange';
-import { useToast } from '@chakra-ui/react';
-import axios from 'axios';
-import api_url from '../../utils/api_url';
 import toast_alert from '../../utils/toast_alert';
 
 const UpdateCustomer = () => {
@@ -20,7 +19,7 @@ const UpdateCustomer = () => {
       e.preventDefault()
       setLoading(true)
       try {
-          const res = await axios.put(`${api_url}/customer/update/${value._id}`,value,{
+          const res = await axios.put(`${baseUrl}/api/customer/update/${value._id}`,value,{
               headers: {
                   authorization : localStorage.getItem('token')
               }

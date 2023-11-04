@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import Loading_request from '../../components/Loding_request';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 import handleChange from '../../utils/handleChange';
 import toast_alert from '../../utils/toast_alert';
 
@@ -39,7 +39,7 @@ const New_product = () => {
         }
         try {
             setLoading(true)
-            const res = await axios.post(`${api_url}/product/create`,value,{
+            const res = await axios.post(`${baseUrl}/api/product/create`,value,{
                 headers: {
                     authorization : localStorage.getItem('token')
                 }
@@ -65,7 +65,7 @@ const New_product = () => {
 
     const getData = async () => {
         try {
-            const res = await axios.get(`${api_url}/product/findGenericBrand`)
+            const res = await axios.get(`${baseUrl}/api/product/findGenericBrand`)
             setCompanies(res.data.data.companies)
             setGenerics(res.data.data.generics)
         } catch (error) {

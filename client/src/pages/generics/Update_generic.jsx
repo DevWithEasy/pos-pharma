@@ -7,6 +7,7 @@ import api_url from '../../utils/api_url';
 import handleChange from '../../utils/handleChange';
 import axios from 'axios';
 import toast_alert from '../../utils/toast_alert';
+import baseUrl from '../../utils/baseUrl';
 
 
 const Update_generic = () => {
@@ -20,7 +21,7 @@ const Update_generic = () => {
       e.preventDefault()
       setLoading(true)
       try {
-          const res = await axios.put(`${api_url}/generic/update/${value._id}`,value,{
+          const res = await axios.put(`${baseUrl}/api/generic/update/${value._id}`,value,{
               headers: {
                   authorization : localStorage.getItem('token')
               }

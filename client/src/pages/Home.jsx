@@ -4,7 +4,7 @@ import Cart from '../components/Cart';
 import Product from '../components/Product';
 import Search from '../components/Search';
 import useUserStore from '../store/userStore';
-import api_url from '../utils/api_url';
+import baseUrl from '../utils/baseUrl';
 
 const Home = () => {
     const [query,setQuery] = useState('')
@@ -12,7 +12,7 @@ const Home = () => {
 
     const getProducts = async() =>{
         try {
-            const res = await axios.get(`${api_url}/product/`)
+            const res = await axios.get(`${baseUrl}/api/product/`)
 
             if(res.data.status === 200){
                 addProducts(res.data.data)

@@ -6,7 +6,7 @@ import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
 import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 const Customers = () => {
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ const Customers = () => {
     const [query,setQuery] = useState('')
     const getCustomers = async() =>{
         try {
-            const res = await axios.get(`${api_url}/customer`)
+            const res = await axios.get(`${baseUrl}/api/customer`)
             if(res.status === 200){
                 addCustomers(res.data.data)
             }

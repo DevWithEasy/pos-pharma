@@ -7,9 +7,9 @@ import { RxAvatar, RxHeart, RxHome } from 'react-icons/rx';
 import { TbMoneybag } from 'react-icons/tb';
 import Dashboard_skeleton from '../components/Dashboard_skeleton';
 import Heading from '../components/Heading';
-import api_url from '../utils/api_url';
-import get_fixed_num from '../utils/get_fixed_num';
 import ReportChart from '../components/ReportChart';
+import baseUrl from '../utils/baseUrl';
+import get_fixed_num from '../utils/get_fixed_num';
 
 const Dashboard = () => {
     const [loading,setLoading] = useState(false)
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const getDashboardData =async()=>{
         setLoading(true)
         try {
-            const res = await axios.get(`${api_url}/auth/dashboard`,{
+            const res = await axios.get(`${baseUrl}/api/auth/dashboard`,{
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

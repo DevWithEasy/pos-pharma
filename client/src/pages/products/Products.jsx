@@ -4,14 +4,14 @@ import Heading from '../../components/Heading';
 import ProductListItem from '../../components/ProductListItem';
 import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 const Products = () => {
     const {products,addProducts} = useUserStore()
     const [query,setQuery] = useState('')
     const getProducts = async() =>{
         try {
-            const res = await axios.get(`${api_url}/product/`)
+            const res = await axios.get(`${baseUrl}/api/product/`)
 
             addProducts(res.data.data)
 

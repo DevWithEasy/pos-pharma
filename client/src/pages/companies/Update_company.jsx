@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import useUserStore from '../../store/userStore';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 import handleChange from '../../utils/handleChange';
 import toast_alert from '../../utils/toast_alert';
 
@@ -19,7 +19,7 @@ const Update_company = () => {
       e.preventDefault()
       setLoading(true)
       try {
-          const res = await axios.put(`${api_url}/company/update/${value._id}`,value,{
+          const res = await axios.put(`${baseUrl}/api/company/update/${value._id}`,value,{
               headers: {
                   authorization : localStorage.getItem('token')
               }

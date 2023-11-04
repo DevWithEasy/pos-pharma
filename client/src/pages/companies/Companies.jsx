@@ -7,6 +7,7 @@ import Heading from '../../components/Heading';
 import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
 import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 
 const Companies = () => {
@@ -16,7 +17,7 @@ const Companies = () => {
     const [query,setQuery] = useState('')
     const getCompanies = async() =>{
         try {
-            const res = await axios.get(`${api_url}/company`)
+            const res = await axios.get(`${baseUrl}/api/company`)
             if(res.status === 200){
                 addCompanies(res.data.data)
             }

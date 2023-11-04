@@ -1,9 +1,9 @@
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
 import React, { useState } from 'react';
 import Heading from '../../../components/Heading';
+import baseUrl from '../../../utils/baseUrl';
 import handleChange from '../../../utils/handleChange';
-import axios from 'axios'
-import api_url from '../../../utils/api_url';
-import { useToast } from '@chakra-ui/react';
 import toast_alert from '../../../utils/toast_alert';
 
 const New_report = () => {
@@ -25,7 +25,7 @@ const New_report = () => {
     const generateReport = async()=>{
         setLoading(true)
         try {
-            const res = await axios.post(`${api_url}/report`,value,{
+            const res = await axios.post(`${baseUrl}/api/report`,value,{
                 headers : {
                     authorization : localStorage.getItem('token')
                 }
@@ -50,7 +50,7 @@ const New_report = () => {
 
     const createReport = async()=>{
         try {
-            const res = await axios.post(`${api_url}/report/create`,data,{
+            const res = await axios.post(`${baseUrl}/api/report/create`,data,{
                 headers : {
                     authorization : localStorage.getItem('token')
                 }

@@ -6,7 +6,7 @@ import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
 import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 const Users = () => {
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ const Users = () => {
     const [query,setQuery] = useState('')
     const getUsers = async() =>{
         try {
-            const res = await axios.get(`${api_url}/auth`)
+            const res = await axios.get(`${baseUrl}/api/auth`)
             if(res.status === 200){
                 addUsers(res.data.data)
             }

@@ -6,7 +6,7 @@ import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
 import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 
 const Invoices = () => {
     const {invoices,addInvoices} = useUserStore()
@@ -15,7 +15,7 @@ const Invoices = () => {
     const navigate = useNavigate()
     const getInvoices = async() =>{
         try {
-            const res = await axios.get(`${api_url}/invoice/` , {
+            const res = await axios.get(`${baseUrl}/api/invoice/` , {
                 headers: {
                     authorization : localStorage.getItem('token')
                 }

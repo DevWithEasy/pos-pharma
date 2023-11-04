@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../../components/Heading';
 import Loading_request from '../../components/Loding_request';
-import api_url from '../../utils/api_url';
+import baseUrl from '../../utils/baseUrl';
 import handleChange from '../../utils/handleChange';
 import toast_alert from '../../utils/toast_alert';
 
@@ -28,7 +28,7 @@ const New_company = () => {
       }
       try {
           setLoading(true)
-          const res = await axios.post(`${api_url}/company/create`,value,{
+          const res = await axios.post(`${baseUrl}/api/company/create`,value,{
               headers: {
                   authorization : localStorage.getItem('token')
               }
